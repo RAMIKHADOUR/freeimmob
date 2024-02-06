@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha256-MBffSnbbXwHCuZtgPYiwMQbfE7z+GOZ7fBPCNB06Z98=" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/login.css">
+    {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
+  <title>Page-Connexion</title>
+</head>
+
+<body class="d-flex h-100 text-center text-bg-primary">
+    {% block body %}
+
+
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+
+            <div class="navbar p-3 mb-2">
+                <div class="container-fluid">
+                    <div>
+                        <a class="navbar-brand" href=""><span id="free">Free</span><span id="immo">Immo</span></a>
+
+                    </div>
+                    <div>
+                        <div class="input-group">
+
+                        </div>
+                    </div>
+                    <div>
+                       
+                        <a class="text-decoration-none m-4 text-warning fs-5 fw-bolder" href="">Consulter</a>
+                        <a class="text-decoration-none m-4 text-warning fs-5 fw-bolder" href="">S'Inscrire</a>
+                        <a class="btn btn-warning text-decoration-none fs-6 fw-bolder text-primary" href="" role="button"><strong>+</strong>Deposer Une Annonce</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="m-5">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                                <form method="post">
+                                    {% if error %}
+                                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData,
+                                        'security') }}</div>
+                                    {% endif %}
+
+                                    {% if app.user %}
+                                    <div class="mb-3">
+                                        You are logged in as {{ app.user.userIdentifier }}, <a
+                                            href="{{ path('app_logout') }}">Logout</a>
+                                    </div>
+                                    {% endif %}
+
+                                    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+                                    <label for="inputEmail"></label>
+                                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail"
+                                        class="form-control" autocomplete="email" required autofocus placeholder="Votre Email">
+                                    <label for="inputPassword"></label>
+                                    <input type="password" name="password" id="inputPassword" class="form-control"
+                                        autocomplete="current-password" required placeholder="Votre Mot de Passe">
+
+                                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                              <br>                                   
+                               <div class="checkbox mb-2">
+                                        <label>
+                                            <input type="checkbox" name="_remember_me" checked>
+                                            Remember me <a class="text-decoration-none text-danger m-5" href="">Mot de Passe Oublié</a>
+                                        </label>
+                                    </div>
+
+                                    <button class="btn btn-lg btn-primary mt-4" type="submit">
+                                       Connexion
+                                    </button>
+                                </form>
+                        </div>
+                    </div>
+               
+    </div>
+    </main>
+
+    </div>
+
+    {% endblock %}
+</body>
+
+</html>

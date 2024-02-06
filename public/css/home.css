@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.fixed-top {
+    background: rgb(75, 4, 105);
+    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(88, 16, 135, 1) 100%);
+
+}
+
+#free {
+    color: rgb(12, 9, 213);
+    font-size: 30px;
+    font-weight: bold;
+    background-color: orange;
+}
+
+#immo {
+    color: orangered;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+footer {
+    background: rgb(75, 4, 105);
+    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(88, 16, 135, 1) 100%);
+}
+
+#home{
+    background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 153, 0, 0.5)),
+                  url("/images/home.png");
+    background-repeat: no-repeat;
+    background-size:cover;
+    height:500px;
+}
