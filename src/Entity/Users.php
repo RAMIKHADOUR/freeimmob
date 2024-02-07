@@ -71,6 +71,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?DateTimeImmutable $createdAt = null;
 
+    #[ORM\Column(type: 'boolean')]
+    private $isVerified = false;
+
     public function __construct() {
         $this->createdAt = new DateTimeImmutable();
      }
@@ -249,9 +252,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
   * @return ?string
   */
  public function getPlainPassword(): ?string
- {
-  return $this->plainPassword;
- }
+          {
+           return $this->plainPassword;
+          }
 
  /**
   * Set the value of plainPassword
@@ -261,9 +264,21 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
   * @return self
   */
  public function setPlainPassword(?string $plainPassword): self
- {
-  $this->plainPassword = $plainPassword;
+          {
+           $this->plainPassword = $plainPassword;
+         
+           return $this;
+          }
 
-  return $this;
- }
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): static
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
+    }
 }
